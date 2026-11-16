@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 3 – Fiscal, tributos e Imposto de Renda | Matheus (@matheus) | A definir | A definir | Fazendo |
+| 3 – Fiscal, tributos e Imposto de Renda | Matheus (@matheus) | A definir | A definir | Revisando |
 
 ## 1. Contexto e objetivo
 No módulo de Imposto de Renda Pessoa Física (IRPF), a declaração anual e a apuração exigem a organização precisa dos rendimentos obtidos e dos pagamentos e despesas efetuados pelo contribuinte. Esta especificação define a coleta, classificação por tipo e registro das despesas dedutíveis e rendimentos vinculados ao contribuinte e segregados por exercício fiscal (ano-calendário), estabelecendo a base de dados consistente para a declaração de IRPF sem extrapolar as regras oficiais do exercício.
@@ -115,7 +115,7 @@ No módulo de Imposto de Renda Pessoa Física (IRPF), a declaração anual e a a
 - [x] Implementar controladores e rotas REST para CRUD e listagem por exercício
 - [x] Criar testes unitários cobrindo validações de esquemas, tipos permitidos e valores monetários não negativos
 - [x] Criar testes de integração validando os critérios de aceite (CA-1 a CA-5)
-- [ ] Submeter Pull Request e aguardar revisão do 4º período
+- [x] Submeter Pull Request e aguardar revisão do 4º período
 
 ## 8. Dependências
 - `SPEC-1.1` (Padrões de contribuição e estrutura de governança)
@@ -141,7 +141,8 @@ No módulo de Imposto de Renda Pessoa Física (IRPF), a declaração anual e a a
    - Inspecionar os registros criados e confirmar o preenchimento do campo `origem_dado` (`MANUAL` ou `IMPORTADO`) e o registro de data/hora (`created_at`).
 
 ## 10. Evidências (preencher ao concluir)
-Execução da suíte completa de testes automatizados unitários e de integração (`npm test`):
+- **Pull Request aberto:** https://github.com/contafaculdade73-maker/pagamentus/pull/1
+- **Execução da suíte completa de testes automatizados unitários e de integração (`npm test`):**
 ```text
 > node --import tsx --test "test/**/*.test.ts"
 
