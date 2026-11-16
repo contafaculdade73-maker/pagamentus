@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 3 – Fiscal, tributos e Imposto de Renda | Matheus (@matheus) | A definir | A definir | Revisando |
+| 3 – Fiscal, tributos e Imposto de Renda | Matheus (@matheus) | A definir | https://trello.com/c/4ph4eFdj | Revisando |
 
 ## 1. Contexto e objetivo
 No módulo de Imposto de Renda Pessoa Física (IRPF), a declaração anual e a apuração exigem a organização precisa dos rendimentos obtidos e dos pagamentos e despesas efetuados pelo contribuinte. Esta especificação define a coleta, classificação por tipo e registro das despesas dedutíveis e rendimentos vinculados ao contribuinte e segregados por exercício fiscal (ano-calendário), estabelecendo a base de dados consistente para a declaração de IRPF sem extrapolar as regras oficiais do exercício.
