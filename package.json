@@ -1,0 +1,36 @@
+{
+  "name": "pagamentus",
+  "version": "1.0.0",
+  "description": "> **Projeto Integrador – Gestão da Tecnologia da Informação (GTI)**  \r > **Desenvolvimento:** 2º Período de GTI  \r > **Gestão e Revisão:** 4º Período de GTI  \r > **Método:** Spec-Driven Development (SDD)  \r > **Ferramentas de Apoio:** Trello & GitHub",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "tsx src/server.ts",
+    "test": "node --import tsx --test \"test/**/*.test.ts\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/contafaculdade73-maker/pagamentus.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/contafaculdade73-maker/pagamentus/issues"
+  },
+  "homepage": "https://github.com/contafaculdade73-maker/pagamentus#readme",
+  "dependencies": {
+    "express": "^5.3.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

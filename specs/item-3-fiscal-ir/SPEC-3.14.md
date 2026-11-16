@@ -108,13 +108,13 @@ No módulo de Imposto de Renda Pessoa Física (IRPF), a declaração anual e a a
 - [x] Criar branch de trabalho no padrão oficial (`spec/3.14-rendimentos-deducoes`)
 - [x] Elaborar a especificação `SPEC-3.14.md` na pasta `specs/item-3-fiscal-ir/`
 - [x] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
-- [ ] Criar migração de banco de dados para criação das tabelas `irpf_rendimentos` e `irpf_pagamentos_deducoes` com índices e constraints
-- [ ] Implementar schemas Zod para validação dos dados de entrada de rendimentos e despesas dedutíveis
-- [ ] Implementar serviço e repositório para coleta e persistência de rendimentos por tipo (RF-031)
-- [ ] Implementar serviço e repositório para registro de despesas dedutíveis por exercício (RF-033)
-- [ ] Implementar controladores e rotas REST para CRUD e listagem por exercício
-- [ ] Criar testes unitários cobrindo validações de esquemas, tipos permitidos e valores monetários não negativos
-- [ ] Criar testes de integração validando os critérios de aceite (CA-1 a CA-5)
+- [x] Criar migração de banco de dados para criação das tabelas `irpf_rendimentos` e `irpf_pagamentos_deducoes` com índices e constraints
+- [x] Implementar schemas Zod para validação dos dados de entrada de rendimentos e despesas dedutíveis
+- [x] Implementar serviço e repositório para coleta e persistência de rendimentos por tipo (RF-031)
+- [x] Implementar serviço e repositório para registro de despesas dedutíveis por exercício (RF-033)
+- [x] Implementar controladores e rotas REST para CRUD e listagem por exercício
+- [x] Criar testes unitários cobrindo validações de esquemas, tipos permitidos e valores monetários não negativos
+- [x] Criar testes de integração validando os critérios de aceite (CA-1 a CA-5)
 - [ ] Submeter Pull Request e aguardar revisão do 4º período
 
 ## 8. Dependências
@@ -141,7 +141,57 @@ No módulo de Imposto de Renda Pessoa Física (IRPF), a declaração anual e a a
    - Inspecionar os registros criados e confirmar o preenchimento do campo `origem_dado` (`MANUAL` ou `IMPORTADO`) e o registro de data/hora (`created_at`).
 
 ## 10. Evidências (preencher ao concluir)
-*Espaço reservado para anexação de prints de tela, saídas de testes automatizados e link do PR após implementação.*
+Execução da suíte completa de testes automatizados unitários e de integração (`npm test`):
+```text
+> node --import tsx --test "test/**/*.test.ts"
+
+▶ API REST: Módulo IRPF (SPEC-3.14)
+  ▶ Endpoints de Rendimentos (RF-031, CA-1, CA-3, CA-4)
+    ✔ POST /api/irpf/:contribuinteId/rendimentos - deve cadastrar rendimento com sucesso (HTTP 201)
+    ✔ POST /api/irpf/:contribuinteId/rendimentos - deve retornar HTTP 400 em caso de valor negativo (CA-4)
+    ✔ GET /api/irpf/:contribuinteId/rendimentos?exercicio=2025 - deve listar rendimentos agrupados por tipo (CA-1, CA-3)
+    ✔ DELETE /api/irpf/:contribuinteId/rendimentos/:id - deve excluir rendimento com sucesso
+  ✔ Endpoints de Rendimentos (RF-031, CA-1, CA-3, CA-4)
+  ▶ Endpoints de Pagamentos e Deduções (RF-033, CA-2, CA-3, CA-4)
+    ✔ POST /api/irpf/:contribuinteId/pagamentos - deve cadastrar despesa dedutível com sucesso (HTTP 201)
+    ✔ POST /api/irpf/:contribuinteId/pagamentos - deve rejeitar requisição sem favorecido (CA-4)
+    ✔ GET /api/irpf/:contribuinteId/pagamentos?exercicio=2025 - deve listar pagamentos agrupados por categoria (CA-2, CA-3)
+    ✔ DELETE /api/irpf/:contribuinteId/pagamentos/:id - deve excluir despesa dedutível com sucesso
+  ✔ Endpoints de Pagamentos e Deduções (RF-033, CA-2, CA-3, CA-4)
+✔ API REST: Módulo IRPF (SPEC-3.14)
+▶ SPEC-3.14: Rendimentos e Deduções do IRPF
+  ▶ CA-1: Registro de rendimentos por tipo e exercício (RF-031)
+    ✔ deve registrar com sucesso rendimento tributável de pessoa jurídica
+    ✔ deve registrar todos os tipos oficiais de rendimento previstos na legislação
+  ✔ CA-1: Registro de rendimentos por tipo e exercício (RF-031)
+  ▶ CA-2: Registro de despesas dedutíveis e pagamentos por exercício (RF-033)
+    ✔ deve registrar com sucesso despesa médica vinculada ao exercício
+    ✔ deve registrar todas as categorias oficiais de despesas dedutíveis (educação, previdência, pensão, doação)
+  ✔ CA-2: Registro de despesas dedutíveis e pagamentos por exercício (RF-033)
+  ▶ CA-3: Segregação e consulta por exercício fiscal
+    ✔ deve retornar exclusivamente os rendimentos do exercício consultado com subtotais corretos
+    ✔ deve retornar exclusivamente as despesas dedutíveis do exercício com subtotais por categoria
+  ✔ CA-3: Segregação e consulta por exercício fiscal
+  ▶ CA-4: Validação de campos obrigatórios e valores não negativos
+    ✔ deve rejeitar rendimento com valor negativo
+    ✔ deve rejeitar rendimento sem fonte pagadora ou documento
+    ✔ deve rejeitar pagamento com valor pago negativo
+    ✔ deve rejeitar categoria de dedução inválida
+  ✔ CA-4: Validação de campos obrigatórios e valores não negativos
+  ▶ CA-5: Rastreabilidade e origem dos dados (RB-005)
+    ✔ deve registrar procedência MANUAL por padrão com carimbos de data/hora
+    ✔ deve registrar procedência IMPORTADO quando indicado na integração
+  ✔ CA-5: Rastreabilidade e origem dos dados (RB-005)
+  ▶ Exclusão de lançamentos
+    ✔ deve excluir rendimento existente com sucesso
+    ✔ deve excluir pagamento dedutível existente com sucesso
+  ✔ Exclusão de lançamentos
+✔ SPEC-3.14: Rendimentos e Deduções do IRPF
+ℹ tests 22
+ℹ suites 10
+ℹ pass 22
+ℹ fail 0
+```
 
 ## 11. Histórico de revisão
 *Nenhuma ressalva registrada até o momento.*
