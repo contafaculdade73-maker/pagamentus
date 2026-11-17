@@ -141,7 +141,7 @@ No módulo de Imposto de Renda Pessoa Física (IRPF), a declaração anual e a a
    - Inspecionar os registros criados e confirmar o preenchimento do campo `origem_dado` (`MANUAL` ou `IMPORTADO`) e o registro de data/hora (`created_at`).
 
 ## 10. Evidências (preencher ao concluir)
-- **Pull Request aberto:** https://github.com/joaovitor-webdev/pagamentus/pull/7
+- **Pull Request aberto:** https://github.com/joaovitor-webdev/pagamentus/pull/8
 - **Execução da suíte completa de testes automatizados unitários e de integração (`npm test`):**
 ```text
 > node --import tsx --test "test/**/*.test.ts"
